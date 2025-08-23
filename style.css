@@ -1,0 +1,103 @@
+/* Skip link: chỉ hiện khi focus */
+.skip-link{
+  position:absolute; left:0; top:-40px;
+  background:#222; color:#fff; padding:.6rem .8rem;
+  z-index:1000; border-radius:.5rem;
+}
+.skip-link:focus{ top:.5rem; }
+
+/* Reset nhẹ */
+*{ box-sizing:border-box; }
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  line-height:1.6; color:#222; background:#fffdfa;
+}
+
+/* Header + Nav (Flex) */
+.site-header{ border-bottom:1px solid #eee; background:#fff; }
+.navbar{
+  max-width:1100px; margin:0 auto; padding:.8rem 1rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+}
+.logo{ font-weight:800; text-decoration:none; color:#ff5a00; }
+.navlist{ list-style:none; display:flex; gap:.6rem; margin:0; padding:0; }
+.navlist a{
+  text-decoration:none; color:#333; font-weight:600; padding:.4rem .7rem; border-radius:.6rem;
+  transition:background .25s, transform .25s;
+}
+.navlist a:hover{ background:#ffe9db; transform:translateY(-1px); }
+
+/* Hero */
+.hero{ max-width:900px; margin:2rem auto 1rem; padding:1rem; text-align:center; }
+.hero h1{ margin:.2rem 0 0.4rem; }
+
+/* Cards: Grid */
+.cards{
+  max-width:1100px; margin:0 auto 2rem; padding:0 1rem;
+  display:grid; gap:1rem;
+  grid-template-columns: repeat(5, minmax(180px,1fr));
+}
+@media (max-width:1100px){ .cards{ grid-template-columns: repeat(3, minmax(180px,1fr)); } }
+@media (max-width:700px){ .cards{ grid-template-columns: repeat(2, minmax(150px,1fr)); } }
+.card{
+  background:#fff; border:1px solid #eee; border-radius:1rem; padding:.6rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  transition:transform .25s, box-shadow .25s;
+}
+.card:hover{ transform: translateY(-4px) rotate(.5deg); box-shadow:0 10px 24px rgba(0,0,0,.12); }
+.card img{ width:100%; display:block; }
+
+/* Gallery: Grid + nth-child */
+.page-title{ max-width:1100px; margin:1.4rem auto .8rem; padding:0 1rem; }
+.gallery-grid{
+  max-width:1100px; margin:0 auto 2rem; padding:0 1rem;
+  display:grid; gap:14px; grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width:900px){ .gallery-grid{ grid-template-columns: repeat(2, 1fr);} }
+@media (max-width:600px){ .gallery-grid{ grid-template-columns: 1fr; } }
+
+/* Box model cho mọi ảnh + hiệu ứng thú vị */
+img{
+  border:3px solid #e6e6e6;
+  padding:6px;
+  border-radius:14px;
+  max-width:100%;
+  height:auto;
+  filter:grayscale(70%);
+  transition:transform .35s, box-shadow .35s, filter .35s, border-radius .35s;
+}
+img:hover{
+  filter:grayscale(0%);
+  transform:scale(1.06) rotate(1.5deg);
+  box-shadow:0 10px 26px rgba(0,0,0,.18);
+}
+
+/* nth-child: xen kẽ bo góc khác nhau trong gallery */
+.gallery-grid img:nth-child(odd){ border-radius: 16px; }
+.gallery-grid img:nth-child(even){ border-radius: 32px; }
+
+/* About: Flex hàng ngang cuộn được */
+.about-flex{
+  max-width:1100px; margin:1rem auto; padding:0 1rem;
+  display:flex; gap:16px; align-items:flex-start; overflow-x:auto; scroll-snap-type:x mandatory;
+}
+.about-flex figure{ min-width:220px; margin:0; scroll-snap-align:start; }
+.about-flex img{ width:100%; }
+
+/* Text section */
+.about-text{ max-width:800px; margin:1rem auto 2rem; padding:0 1rem; }
+
+/* Footer */
+.site-footer{
+  text-align:center; padding:1rem; background:#fff; border-top:1px solid #eee;
+}
+
+/* Back to top button */
+#backToTop{
+  position:fixed; right:18px; bottom:18px; display:none;
+  border:none; background:#ff5a00; color:#fff; font-weight:700;
+  width:44px; height:44px; border-radius:12px; cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,.2);
+  transition:transform .2s, background .2s;
+}
+#backToTop:hover{ transform: translateY(-2px); background:#e85100; }
